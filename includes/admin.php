@@ -197,19 +197,19 @@ function cs_render_main()
             <?php foreach ($sections as $i => $sec) : ?>
                 <section class="cs-card">
                     <h2 class="cs-card__title"><span class="cs-num"><?php echo (int) $i + 1; ?></span><?php echo esc_html($sec['title']); ?></h2>
-                    <div class="cs-cols" aria-hidden="true"><span>Controllo</span><span>Protezione</span></div>
+                    <div class="cs-cols cs-grid" aria-hidden="true"><span>Controllo</span><span>Stato di questo sito</span><span>Protezione</span></div>
                     <?php foreach ($sec['rows'] as $r) : ?>
-                        <div class="cs-row">
+                        <div class="cs-row cs-grid">
                             <div class="cs-row__check">
                                 <span class="cs-dot cs-dot--<?php echo esc_attr($r['status']); ?>" title="<?php echo esc_attr(cs_status_label($r['status'])); ?>"></span>
                                 <div>
-                                    <div class="cs-row__label">
-                                        <?php echo esc_html($r['label']); ?>
-                                        <span class="cs-tag cs-tag--<?php echo esc_attr($r['status']); ?>"><?php echo esc_html(cs_status_label($r['status'])); ?></span>
-                                    </div>
+                                    <div class="cs-row__label"><?php echo esc_html($r['label']); ?></div>
                                     <p class="cs-row__desc"><?php echo esc_html($r['desc']); ?></p>
-                                    <p class="cs-row__detail"><?php echo esc_html($r['detail']); ?></p>
                                 </div>
+                            </div>
+                            <div class="cs-state cs-state--<?php echo esc_attr($r['status']); ?>">
+                                <span class="cs-tag cs-tag--<?php echo esc_attr($r['status']); ?>"><?php echo esc_html(cs_status_label($r['status'])); ?></span>
+                                <p class="cs-row__detail"><?php echo esc_html($r['detail']); ?></p>
                             </div>
                             <div class="cs-row__action">
                                 <?php if ($r['toggle']) : ?>

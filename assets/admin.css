@@ -226,7 +226,10 @@
   background: var(--cs-soft);
 }
 .cs-lgcard__text { display: flex; gap: 12px; flex: 1; min-width: 240px; }
-.cs-lgcard h2 { margin: 0; font-size: 16px; }
+.cs-lgcard--ok  { background: #f0fdf4;          border-left: 4px solid var(--cs-ok); }
+.cs-lgcard--bad { background: var(--cs-bad-bg); border-left: 4px solid var(--cs-bad); }
+.cs-lgcard--bad p { color: #7f1d1d; }
+.cs-lgcard h2 { margin: 0; font-size: 16px; display: flex; align-items: center; gap: 8px; }
 .cs-lgcard p { margin: 4px 0 0; color: var(--cs-muted); }
 
 /* Barra controlli approfonditi ----------------------------------- */

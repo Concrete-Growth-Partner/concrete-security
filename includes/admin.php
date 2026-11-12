@@ -164,11 +164,12 @@ function cs_render_main()
 
         <?php cs_notice(); ?>
 
-        <section class="cs-card cs-lgcard">
+        <?php $lg_st = $lg['enabled'] ? 'ok' : 'bad'; ?>
+        <section class="cs-card cs-lgcard cs-lgcard--<?php echo $lg_st; ?>">
             <div class="cs-lgcard__text">
-                <span class="cs-dot cs-dot--<?php echo $lg['enabled'] ? 'ok' : 'info'; ?>"></span>
+                <span class="cs-dot cs-dot--<?php echo $lg_st; ?>"></span>
                 <div>
-                    <h2>Login Guard</h2>
+                    <h2>Login Guard <span class="cs-tag cs-tag--<?php echo $lg_st; ?>"><?php echo $lg['enabled'] ? 'Attivo' : 'Spento'; ?></span></h2>
                     <p><?php echo $lg['enabled'] ? 'Attivo: il backoffice è accessibile solo dagli IP autorizzati o con la chiave del team.' : 'Spento. Blocca il backoffice a tutti tranne IP autorizzati e chi ha la chiave segreta.'; ?></p>
                 </div>
             </div>

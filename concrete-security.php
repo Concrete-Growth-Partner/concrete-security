@@ -8,7 +8,7 @@
  * Requires at least: 5.8
  * Requires PHP:      7.4
  * Text Domain:       concrete-security
- * Update URI:        https://github.com/concrete-digital/concrete-security
+ * Update URI:        https://github.com/Concrete-Growth-Partner/concrete-security.git
  */
 
 if (!defined('ABSPATH')) {
@@ -21,7 +21,7 @@ define('CS_DIR', plugin_dir_path(__FILE__));
 define('CS_URL', plugin_dir_url(__FILE__));
 
 // Repository GitHub da cui arrivano gli aggiornamenti (owner/nome-repo).
-define('CS_GITHUB_REPO', 'https://github.com/concrete-digital/concrete-security/');
+define('CS_GITHUB_REPO', 'https://github.com/Concrete-Growth-Partner/concrete-security.git');
 
 require_once CS_DIR . 'includes/settings.php';
 require_once CS_DIR . 'includes/hardening.php';

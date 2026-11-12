@@ -44,6 +44,8 @@ if (file_exists($cs_puc)) {
         CS_FILE,
         'concrete-security'
     );
+    // senza questa riga PUC cerca il branch "master", che qui non esiste
+    $cs_updater->setBranch('main');
     $cs_updater->getVcsApi()->enableReleaseAssets();
 
     // Repository privato: decommenta e metti un token di SOLA LETTURA.

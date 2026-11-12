@@ -1,0 +1,284 @@
+.cs {
+  --cs-bg: #ffffff;
+  --cs-ink: #1c1917;
+  --cs-muted: #78716c;
+  --cs-line: #e7e5e4;
+  --cs-soft: #fafaf9;
+  --cs-accent: #1c1917;
+  --cs-ok: #16a34a;
+  --cs-ok-bg: #dcfce7;
+  --cs-warn: #d97706;
+  --cs-warn-bg: #fef3c7;
+  --cs-bad: #dc2626;
+  --cs-bad-bg: #fee2e2;
+  --cs-info: #a8a29e;
+  --cs-info-bg: #f5f5f4;
+  max-width: 1040px;
+  color: var(--cs-ink);
+  font-size: 14px;
+}
+
+.cs * { box-sizing: border-box; }
+
+/* Header ---------------------------------------------------------- */
+.cs-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 16px 0 20px;
+}
+.cs-title { font-size: 26px; font-weight: 700; margin: 0; padding: 0; line-height: 1.2; }
+.cs-sub { margin: 4px 0 0; color: var(--cs-muted); }
+.cs-back { display: inline-block; margin-bottom: 6px; color: var(--cs-muted); text-decoration: none; }
+.cs-back:hover { color: var(--cs-ink); }
+
+.cs-summary { display: flex; flex-wrap: wrap; gap: 8px; }
+.cs-pill {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 13px;
+}
+.cs-pill--bad  { background: var(--cs-bad-bg);  color: var(--cs-bad); }
+.cs-pill--warn { background: var(--cs-warn-bg); color: var(--cs-warn); }
+.cs-pill--ok   { background: var(--cs-ok-bg);   color: var(--cs-ok); }
+
+/* Notice ---------------------------------------------------------- */
+.cs-notice {
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin: 0 0 16px;
+  font-weight: 500;
+}
+.cs-notice--ok   { background: var(--cs-ok-bg);   color: #14532d; }
+.cs-notice--warn { background: var(--cs-warn-bg); color: #78350f; }
+
+/* Card ------------------------------------------------------------ */
+.cs-card {
+  background: var(--cs-bg);
+  border: 1px solid var(--cs-line);
+  border-radius: 14px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+}
+.cs-card__title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+.cs-num {
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  background: var(--cs-accent);
+  color: #fff;
+  font-size: 13px;
+}
+
+.cs-cols {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--cs-line);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--cs-muted);
+}
+
+/* Riga controllo + interruttore ---------------------------------- */
+.cs-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--cs-line);
+}
+.cs-row:last-child { border-bottom: 0; }
+.cs-card > .cs-row:first-child { padding-top: 0; }
+
+.cs-row__check { display: flex; gap: 12px; flex: 1; min-width: 0; }
+.cs-row__label { font-weight: 600; font-size: 14px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.cs-row__desc { margin: 4px 0 0; color: var(--cs-muted); font-size: 13px; line-height: 1.5; }
+.cs-row__detail { margin: 6px 0 0; font-size: 13px; line-height: 1.5; word-break: break-word; }
+.cs-row__action { flex: 0 0 auto; padding-top: 2px; min-width: 96px; text-align: right; }
+
+.cs-dot {
+  flex: 0 0 auto;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-top: 5px;
+}
+.cs-dot--ok   { background: var(--cs-ok); }
+.cs-dot--warn { background: var(--cs-warn); }
+.cs-dot--bad  { background: var(--cs-bad); }
+.cs-dot--info { background: var(--cs-info); }
+
+.cs-tag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+.cs-tag--ok   { background: var(--cs-ok-bg);   color: var(--cs-ok); }
+.cs-tag--warn { background: var(--cs-warn-bg); color: var(--cs-warn); }
+.cs-tag--bad  { background: var(--cs-bad-bg);  color: var(--cs-bad); }
+.cs-tag--info { background: var(--cs-info-bg); color: var(--cs-muted); }
+
+.cs-muted { color: var(--cs-muted); font-size: 12px; }
+.cs-link { font-weight: 600; text-decoration: none; color: var(--cs-ink); }
+.cs-link:hover { text-decoration: underline; }
+
+/* Interruttore ---------------------------------------------------- */
+.cs-switch { position: relative; display: inline-block; cursor: pointer; }
+.cs-switch input { position: absolute; opacity: 0; width: 0; height: 0; }
+.cs-switch__track {
+  display: block;
+  width: 44px;
+  height: 24px;
+  border-radius: 999px;
+  background: #d6d3d1;
+  transition: background .2s;
+  position: relative;
+}
+.cs-switch__track::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,.2);
+  transition: transform .2s;
+}
+.cs-switch input:checked + .cs-switch__track { background: var(--cs-ok); }
+.cs-switch input:checked + .cs-switch__track::after { transform: translateX(20px); }
+.cs-switch input:focus-visible + .cs-switch__track { outline: 2px solid var(--cs-ink); outline-offset: 2px; }
+
+/* Bottoni --------------------------------------------------------- */
+.cs-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: 1px solid var(--cs-accent);
+  background: var(--cs-accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  line-height: 1.2;
+}
+.cs-btn:hover, .cs-btn:focus { background: #44403c; color: #fff; }
+.cs-btn--ghost { background: transparent; color: var(--cs-ink); border-color: var(--cs-line); }
+.cs-btn--ghost:hover, .cs-btn--ghost:focus { background: var(--cs-soft); color: var(--cs-ink); }
+.cs-btn--danger { background: var(--cs-bad); border-color: var(--cs-bad); }
+.cs-btn--danger:hover { background: #b91c1c; }
+.cs-btn--sm { padding: 7px 12px; font-size: 13px; }
+.cs-btn[disabled] { opacity: .6; cursor: wait; }
+
+/* Card Login Guard in home --------------------------------------- */
+.cs-lgcard {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: var(--cs-soft);
+}
+.cs-lgcard__text { display: flex; gap: 12px; flex: 1; min-width: 240px; }
+.cs-lgcard h2 { margin: 0; font-size: 16px; }
+.cs-lgcard p { margin: 4px 0 0; color: var(--cs-muted); }
+
+/* Barra controlli approfonditi ----------------------------------- */
+.cs-deepbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 0 16px;
+  color: var(--cs-muted);
+}
+.cs-deepbar p { margin: 0; flex: 1; min-width: 240px; }
+
+/* Campi ----------------------------------------------------------- */
+.cs-field { margin-top: 16px; }
+.cs-field label { display: block; font-weight: 600; margin-bottom: 6px; }
+.cs-field input[type="text"],
+.cs-field input[type="password"],
+.cs-field input[type="number"],
+.cs-field select,
+.cs-field textarea {
+  width: 100%;
+  max-width: 560px;
+  padding: 8px 12px;
+  border: 1px solid var(--cs-line);
+  border-radius: 8px;
+  font-size: 14px;
+}
+.cs-field textarea { font-family: ui-monospace, Menlo, monospace; margin-bottom: 8px; }
+.cs-field--inline input { max-width: 120px; }
+
+.cs-copy { display: flex; gap: 8px; margin-top: 12px; max-width: 720px; }
+.cs-copy input {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 12px;
+  border: 1px solid var(--cs-line);
+  border-radius: 8px;
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 12px;
+  background: var(--cs-soft);
+}
+
+/* Barra salva ----------------------------------------------------- */
+.cs-savebar {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 20px;
+  margin: 0 0 16px;
+  background: var(--cs-bg);
+  border: 1px solid var(--cs-line);
+  border-radius: 14px;
+  box-shadow: 0 -4px 16px rgba(0,0,0,.05);
+}
+
+.cs-danger {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 20px;
+  border: 1px solid var(--cs-bad-bg);
+  border-radius: 14px;
+}
+.cs-danger p { margin: 2px 0 0; }
+
+@media (max-width: 782px) {
+  .cs-card { padding: 16px; }
+  .cs-row { flex-direction: column; gap: 10px; }
+  .cs-row__action { text-align: left; padding-left: 22px; }
+  .cs-cols { display: none; }
+}

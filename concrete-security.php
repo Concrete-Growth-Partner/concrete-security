@@ -2,26 +2,26 @@
 /**
  * Plugin Name:       Concrete Security
  * Description:       Controlli e protezioni di sicurezza di Concrete Digital. Ogni protezione si attiva singolarmente.
- * Version:           2.0.2
+ * Version:           2.0.3
  * Author:            Concrete Digital
  * Author URI:        https://concrete.digital
  * Requires at least: 5.8
  * Requires PHP:      7.4
  * Text Domain:       concrete-security
- * Update URI:        https://github.com/Concrete-Growth-Partner/concrete-security.git
+ * Update URI:        https://github.com/Concrete-Growth-Partner/concrete-security
  */
 
 if (!defined('ABSPATH')) {
     exit;
 }
 
-define('CS_VERSION', '2.0.2');
+define('CS_VERSION', '2.0.3');
 define('CS_FILE', __FILE__);
 define('CS_DIR', plugin_dir_path(__FILE__));
 define('CS_URL', plugin_dir_url(__FILE__));
 
 // Repository GitHub da cui arrivano gli aggiornamenti (owner/nome-repo).
-define('CS_GITHUB_REPO', 'https://github.com/Concrete-Growth-Partner/concrete-security.git');
+define('CS_GITHUB_REPO', 'https://github.com/Concrete-Growth-Partner/concrete-security');
 
 require_once CS_DIR . 'includes/settings.php';
 require_once CS_DIR . 'includes/hardening.php';

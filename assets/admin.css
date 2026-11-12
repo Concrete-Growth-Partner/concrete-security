@@ -30,7 +30,11 @@
   margin: 16px 0 20px;
 }
 .cs-title { font-size: 26px; font-weight: 700; margin: 0; padding: 0; line-height: 1.2; }
-.cs-sub { margin: 4px 0 0; color: var(--cs-muted); }
+.cs-title--home { font-size: 36px; }
+.cs-credit { margin: 2px 0 0; font-size: 13px; color: var(--cs-muted); }
+.cs-credit a { color: var(--cs-ink); font-weight: 600; text-decoration: none; }
+.cs-credit a:hover { text-decoration: underline; }
+.cs-sub {margin: 4px 0 0; color: var(--cs-muted); }
 .cs-back { display: inline-block; margin-bottom: 6px; color: var(--cs-muted); text-decoration: none; }
 .cs-back:hover { color: var(--cs-ink); }
 

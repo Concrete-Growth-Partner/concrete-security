@@ -152,7 +152,8 @@ function cs_render_main()
     <div class="wrap cs">
         <header class="cs-head">
             <div>
-                <h1 class="cs-title">Concrete Security</h1>
+                <h1 class="cs-title cs-title--home">Concrete Security</h1>
+                <p class="cs-credit">Realizzato da <a href="https://concrete.digital" target="_blank" rel="noopener">concrete.digital</a></p>
                 <p class="cs-sub">Stato di sicurezza di <strong><?php echo esc_html(wp_parse_url(home_url(), PHP_URL_HOST)); ?></strong> · v<?php echo esc_html(CS_VERSION); ?></p>
             </div>
             <div class="cs-summary">

@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Concrete Security
  * Description:       Controlli e protezioni di sicurezza di Concrete Digital. Ogni protezione si attiva singolarmente.
- * Version:           2.0.3
+ * Version:           2.0.4
  * Author:            Concrete Digital
  * Author URI:        https://concrete.digital
  * Requires at least: 5.8
@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('CS_VERSION', '2.0.3');
+define('CS_VERSION', '2.0.4');
 define('CS_FILE', __FILE__);
 define('CS_DIR', plugin_dir_path(__FILE__));
 define('CS_URL', plugin_dir_url(__FILE__));

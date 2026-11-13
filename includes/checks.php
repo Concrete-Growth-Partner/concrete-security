@@ -127,6 +127,8 @@ function cs_get_checks()
 
     $rows[] = cs_row('Disattiva pingback', 'I pingback vengono usati per far attaccare altri siti dal tuo (DDoS).', cs_on('disable_pingback') ? 'ok' : 'warn', cs_on('disable_pingback') ? 'Attivo.' : 'Pingback attivi.', 'disable_pingback');
 
+    $rows[] = cs_row('Disattiva commenti', 'Spegne i commenti su tutto il sito: form, invio diretto dei bot, REST API, XML-RPC, feed, menu e widget. I commenti esistenti restano nel database ma non si vedono. Non attivarlo se il sito usa i commenti o le recensioni WooCommerce.', cs_on('disable_comments') ? 'ok' : 'warn', cs_on('disable_comments') ? 'Commenti disattivati.' : 'Commenti attivi: possibile canale di spam.', 'disable_comments');
+
     $fe_defined = defined('DISALLOW_FILE_EDIT') && DISALLOW_FILE_EDIT;
     $rows[] = cs_row('Disattiva editor file', 'Toglie Aspetto → Editor e Plugin → Editor: chi ruba un admin non può scrivere codice PHP dalla bacheca.', $fe_defined ? 'ok' : 'bad', $fe_defined ? (cs_on('disable_file_edit') ? 'Editor disattivato.' : 'Già disattivato nel wp-config.php.') : 'Editor attivo.', 'disable_file_edit');
 

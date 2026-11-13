@@ -199,3 +199,100 @@ if (cs_on('limit_revisions')) {
         return ($num < 0 || $num > 5) ? 5 : $num;
     }, 9999);
 }
+
+/* Disattiva commenti -------------------------------------------- */
+if (cs_on('disable_comments')) {
+
+    // Supporto commenti e trackback tolto da tutti i post type.
+    add_action('init', function () {
+        foreach (get_post_types() as $post_type) {
+            if (post_type_supports($post_type, 'comments')) {
+                remove_post_type_support($post_type, 'comments');
+            }
+            if (post_type_supports($post_type, 'trackbacks')) {
+                remove_post_type_support($post_type, 'trackbacks');
+            }
+        }
+    }, 100);
+
+    // Chiusi anche sui contenuti vecchi; commenti esistenti nascosti.
+    add_filter('comments_open', '__return_false', 9999);
+    add_filter('pings_open', '__return_false', 9999);
+    add_filter('comments_array', '__return_empty_array', 9999);
+    add_filter('get_comments_number', '__return_zero', 9999);
+
+    // Bot che postano direttamente su wp-comments-post.php.
+    add_action('pre_comment_on_post', function () {
+        wp_die('Commenti disattivati.', '', ['response' => 403]);
+    });
+
+    // Admin: menu, pagine e metabox.
+    add_action('admin_menu', function () {
+        remove_menu_page('edit-comments.php');
+        remove_submenu_page('options-general.php', 'options-discussion.php');
+    }, 999);
+
+    add_action('admin_init', function () {
+        global $pagenow;
+        if (in_array($pagenow, ['edit-comments.php', 'comment.php', 'options-discussion.php'], true)) {
+            wp_safe_redirect(admin_url());
+            exit;
+        }
+        remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal');
+        foreach (get_post_types() as $post_type) {
+            remove_meta_box('commentstatusdiv', $post_type, 'normal');
+            remove_meta_box('commentsdiv', $post_type, 'normal');
+            remove_meta_box('trackbacksdiv', $post_type, 'normal');
+        }
+    });
+
+    add_action('admin_bar_menu', function ($bar) {
+        $bar->remove_node('comments');
+    }, 999);
+
+    // REST API e XML-RPC (strpos al posto di str_starts_with: il plugin supporta PHP 7.4).
+    add_filter('rest_endpoints', function ($endpoints) {
+        foreach (array_keys($endpoints) as $route) {
+            if (strpos($route, '/wp/v2/comments') === 0) {
+                unset($endpoints[$route]);
+            }
+        }
+        return $endpoints;
+    });
+
+    add_filter('xmlrpc_methods', function ($methods) {
+        foreach (array_keys($methods) as $m) {
+            if (stripos($m, 'comment') !== false) {
+                unset($methods[$m]);
+            }
+        }
+        return $methods;
+    });
+
+    // Feed commenti.
+    add_filter('feed_links_show_comments_feed', '__return_false');
+    add_action('template_redirect', function () {
+        if (is_comment_feed()) {
+            wp_die('Feed commenti disattivato.', '', ['response' => 404]);
+        }
+    }, 1);
+
+    // Widget, script e blocchi Gutenberg dei commenti.
+    add_action('widgets_init', function () {
+        unregister_widget('WP_Widget_Recent_Comments');
+        add_filter('show_recent_comments_widget_style', '__return_false');
+    });
+
+    add_action('wp_enqueue_scripts', function () {
+        wp_deregister_script('comment-reply');
+    }, 100);
+
+    add_filter('allowed_block_types_all', function ($allowed, $context) {
+        if ($allowed === true) {
+            $allowed = array_keys(WP_Block_Type_Registry::get_instance()->get_all_registered());
+        }
+        return array_values(array_filter((array) $allowed, function ($block) {
+            return strpos($block, 'core/comment') !== 0 && $block !== 'core/latest-comments' && $block !== 'core/post-comments-form';
+        }));
+    }, 10, 2);
+}

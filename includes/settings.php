@@ -17,6 +17,7 @@ function cs_features()
         'disable_registration' => 'Chiudi registrazione utenti',
         'disable_xmlrpc'       => 'Chiudi XML-RPC',
         'disable_pingback'     => 'Disattiva pingback',
+        'disable_comments'     => 'Disattiva commenti',
         'disable_file_edit'    => 'Disattiva editor file',
         'hide_wp_version'      => 'Nascondi versione WordPress',
         'block_sensitive'      => 'Blocca file sensibili',
